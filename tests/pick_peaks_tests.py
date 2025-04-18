@@ -2,7 +2,6 @@ import codewars_test as test
 
 from katas.pick_peaks import pick_peaks
 
-
 @test.describe("Fixed Tests")
 def fixed_tests():
     @test.it("Tests")
