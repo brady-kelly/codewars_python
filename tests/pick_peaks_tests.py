@@ -17,3 +17,6 @@ def fixed_tests():
         test.assert_equals(pick_peaks([18, 18, 10, -3, -4, 15, 15, -1, 13, 17, 11, 4, 18, -4, 19, 4, 18, 10, -4, 8, 13, 9, 16, 18, 6, 7]),{'pos': [5, 9, 12, 14, 16, 20, 23], 'peaks': [15, 17, 18, 19, 18, 13, 18]})
         test.assert_equals(pick_peaks([]),{"pos":[],"peaks":[]})
         test.assert_equals(pick_peaks([1,1,1,1]),{"pos":[],"peaks":[]})
+
+if __name__ == '__main__':
+    fixed_tests()
