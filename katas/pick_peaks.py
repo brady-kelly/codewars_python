@@ -8,14 +8,12 @@ def pick_peaks(arr):
     arr_str = ''.join([str(x) for x in arr])
     repeats = plat_pat.finditer(arr_str)
 
-    #[21312222]
-    #{01234567]
     for r in repeats:
         place = r.span()
         num = int(r.group()[0])
         if place[0] > 0 and place[1] - 1 < len(arr):
             before = arr[place[0]-1]
-            after = arr[place[1]]
+            after = arr[place[1]-1]
             if before < num and after < num:
                 plats.append((place[0], place[1] -1))
 
@@ -28,7 +26,9 @@ def pick_peaks(arr):
                     start = p[1] + 1
                     pos.append(i)
     else:
-        for i in range(1, len(arr) - 1):
+        # [21312222]
+        # {01234567]
+        for i in range(1, len(arr)):
             if arr[i - 1] < arr[i] and arr[i + 1] < arr[i]:
                 pos.append(i)
 
@@ -38,5 +38,5 @@ def pick_peaks(arr):
     return {"pos": pos, "peaks": peaks}
 
 if __name__ == '__main__':
-    pick_peaks([2,1,3,1,2,2,2,2])
+    pick_peaks([3,2,3,6,4,1,2,3,2,1,2,2,2,1])
 
