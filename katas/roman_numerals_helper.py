@@ -4,17 +4,26 @@ class RomanNumerals:
     def to_roman(val : int) -> str:
         roman = ''
         wip = val
-        for dec in RomanNumerals.romans:
+        for dec in RomanNumerals.nums:
             c = wip // dec
-            roman += RomanNumerals.romans[dec] * c
+            roman += RomanNumerals.nums[dec] * c
             wip = wip % dec
         return roman
 
     @staticmethod
     def from_roman(roman_num : str) -> int:
-        return 0
+        total = 0
+        wip = roman_num
+        while len(wip) > 0:
+            if wip[:2] in ["CM", "CD", "XC", "XL", "IX", "IV"]:
+                total += RomanNumerals.romans[wip[:2]]
+                wip = wip[2:]
+            else:
+                total += RomanNumerals.romans[wip[0]]
+                wip = wip[1:]
+        return total
 
-    romans = {
+    nums = {
         1000: "M",
         900: "CM",
         500: "D",
@@ -30,5 +39,21 @@ class RomanNumerals:
         1: "I"
     }
 
+    romans = {
+        "M": 1000,
+        "CM": 900,
+        "D": 500,
+        "CD": 400,
+        "C": 100,
+        "XC": 90,
+        "L": 50,
+        "XL": 40,
+        "X": 10,
+        "IX": 9,
+        "V": 5,
+        "IV": 4,
+        "I": 1
+    }
+
 if __name__ == '__main__':
-    RomanNumerals.to_roman(1990)
+    RomanNumerals.from_roman("MDCLXVI")
