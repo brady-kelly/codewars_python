@@ -4,6 +4,9 @@ class User:
     progress = 0
 
     def inc_progress(self, rank):
+        if rank < -8 or rank > 8 or rank == 0:
+            raise AssertionError("Rank must be between -8 and 8")
+
         if self.rank == rank:
             self.progress += 3
         elif self.rank - 1 == rank:
@@ -21,11 +24,16 @@ class User:
             inc = self.progress // 100
             for _ in range(inc):
                 self.rank += 1
-                # if self.rank == 0:
-                #     self.rank = 1
+                if self.rank == 0:
+                    self.rank = 1
                 self.progress -= 100
 
 
 if __name__ == "__main__":
     usr = User()
     usr.inc_progress(1)
+    print(usr.rank)
+    print(usr.progress)
+    usr.inc_progress(1)
+    print(usr.rank)
+    print(usr.progress)

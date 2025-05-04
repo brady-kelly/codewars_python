@@ -48,3 +48,24 @@ def _():
     user.inc_progress(1)
     test.assert_equals(user.rank, -2)
     test.assert_equals(user.progress, 80)
+
+@test.it("[-1]")
+def _():
+    user = User()
+    user.inc_progress(-1)
+    test.assert_equals(user.progress, 21)
+
+@test.it("[1, 1, 1, 1, 1, 2, 2, -1]")
+def _():
+    user = User()
+    user.inc_progress(1)
+    test.assert_equals(user.rank, -2)
+    test.assert_equals(user.progress, 40)
+
+    user.inc_progress(1)
+    test.assert_equals(user.rank, -2)
+    test.assert_equals(user.progress, 80)
+
+    user.inc_progress(1)
+    test.assert_equals(user.rank, -2)
+    test.assert_equals(user.progress, 80)
