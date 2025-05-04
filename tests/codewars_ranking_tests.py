@@ -1,6 +1,8 @@
-from solution import User
 import codewars_test as test
 from codewars_test import it
+
+from katas.codewars_ranking import User
+
 
 @it("[-8]")
 def _():
