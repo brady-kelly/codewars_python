@@ -19,5 +19,3 @@ def rot13(message):
 
 if __name__ == '__main__':
     rot13('Avoid success at all costs!', 'world')
-    #Nkbiq fhpprff ng nyy pbfgf!
-    #Nibvq fhpprff ng nyy pbfgf!
